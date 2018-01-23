@@ -1,0 +1,10 @@
+{
+  "name": "@source4society/react-multiform-container",
+  "version": "0.0.1",
+  "description": "an HOC for managing multiple react-form-containers",
+  "main": "index.js",
+  "repository": "git@github.com:source4societyorg/react-multiform-container.git",
+  "author": "Source 4 Society <accounts@source4society.org>",
+  "license": "AGPL-3.0",
+  "private": false
+}
