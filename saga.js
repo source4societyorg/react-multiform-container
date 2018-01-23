@@ -4,14 +4,14 @@ import { postMultiFormForm } from './actions';
 import { fromJS, Map as ImmutableMap } from 'immutable';
 import utilities from '@source4society/scepter-utility-lib';
 import { makeSelectSubmittingDisabled, makeSelectFormStatus } from './selectors';
-import { multiFormHandler, multiForm } from 'models/multiFormSaga'
+import { multiFormHandler, multiForm } from './multiFormSaga'
 
 export const collectMultiFormData = (reducerKey) => (function* (action) {
-  yield* multiFormHandler(action, function* (action) {
+  yield* multiFormHandler(reducerKey, action, function* (action) {
+    throw new Error('test message')
     const submittingDisabled = yield select ( makeSelectSubmittingDisabled(reducerKey) );     
     const formStatus = yield select( makeSelectFormStatus() );
     const formData = yield* multiForm(submittingDisabled, formStatus, action.formProperties)
-     console.log(formData) 
     yield put(postMultiFormForm(reducerKey, formData))
   })
 })

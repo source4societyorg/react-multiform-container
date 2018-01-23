@@ -1,5 +1,7 @@
 import { fromJS, Map as immutableMap } from 'immutable';
-
+import {
+  CHANGE_FIELD,
+} from 'containers/FormContainer/constants'
 import {
   SET_MULTIFORM_MESSAGE,
   SUBMIT_MULTIFORM_FORMS,
@@ -24,10 +26,16 @@ const submitMultiFormFormsReducer = (state = initialState, action, reducerKey) =
 }
 
 const submittedMultiFormFormsReducer = (state = initialState, action, reducerKey) => {
+  if ( action.reducerKey !== reducerKey ) { return state }
   let formName = action.formValues.keySeq().toJS()[0]
   return state
     .set('submitForms', false)
     .setIn(['formStatus', formName], immutableMap({ isValid: action.isValid, formValues: action.formValues }))
+}
+
+const changeFieldMultiFormReducer = (state = initialState, action, reducerKey) => {
+  return state
+    .set('message', initialState.get('message'))
 }
 
 const multiFormReducer = (reducerKey) => ( state = initialState, action ) => {
@@ -38,6 +46,8 @@ const multiFormReducer = (reducerKey) => ( state = initialState, action ) => {
       return submitMultiFormFormsReducer(state, action, reducerKey)        
     case SUBMITTED_MULTIFORM_FORM:   
       return submittedMultiFormFormsReducer(state, action, reducerKey)
+    case CHANGE_FIELD:
+      return changeFieldMultiFormReducer(state, action, reducerKey)
     default:
       return state
   }

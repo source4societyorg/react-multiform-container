@@ -48,7 +48,7 @@ export class MultiForm extends React.PureComponent { // eslint-disable-line reac
 		})
 	}
 
-  renderMessage(message) { 
+  renderMessage(message) {
     if (typeof message.get('message') !== 'undefined' ) {
       return <Alert alertType={message.get('type')}>{this.props.labels(message.get('message'))}</Alert>
     }
