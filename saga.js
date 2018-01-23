@@ -8,7 +8,6 @@ import { multiFormHandler, multiForm } from './multiFormSaga'
 
 export const collectMultiFormData = (reducerKey) => (function* (action) {
   yield* multiFormHandler(reducerKey, action, function* (action) {
-    throw new Error('test message')
     const submittingDisabled = yield select ( makeSelectSubmittingDisabled(reducerKey) );     
     const formStatus = yield select( makeSelectFormStatus() );
     const formData = yield* multiForm(submittingDisabled, formStatus, action.formProperties)
