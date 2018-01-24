@@ -5,7 +5,7 @@ import {
   SET_MULTIFORM_MESSAGE,
 } from './constants'
 
-export function setMultiFormMessage(reducerKey, message) {
+export function setMultiFormMessage(reducerKey='multiForm', message) {
   return {
     type: SET_MULTIFORM_MESSAGE,
     reducerKey,
@@ -20,7 +20,7 @@ export function submitMultiFormForms(reducerKey) {
   }
 }
 
-export function submittedMultiFormForm(reducerKey, isValid, formValues, history, formProperties) {
+export function submittedMultiFormForm(reducerKey='multiForm', isValid, formValues, history, formProperties) {
   return {
     type: SUBMITTED_MULTIFORM_FORM,
     reducerKey,
@@ -31,10 +31,18 @@ export function submittedMultiFormForm(reducerKey, isValid, formValues, history,
   }
 }
 
-export function postMultiFormForm(reducerKey, formData) {
+export function postMultiFormForm(reducerKey='multiForm', formData) {
   return {
     type: POST_MULTIFORM_FORM,
     reducerKey,
     formData
   }
 }
+
+export function sendDataToMultiForm(reducerKey='multiForm', formData) {
+  return {
+    type: RECEIVE_MULTIFORM_DATA,
+    reducerKey,
+    formData
+  }
+} 

@@ -33,5 +33,5 @@ export {
   makeSelectSubmitForms, 
   makeSelectFormLoading,
   makeSelectSubmittingDisabled,
-  makeSelectFormStatus
+  makeSelectFormStatus,
 };

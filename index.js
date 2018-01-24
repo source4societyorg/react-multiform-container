@@ -22,7 +22,8 @@ import Alert from 'components/Alert';
 import saga from './saga';
 
 export class MultiForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-	renderChildren(children) {
+  
+  renderChildren(children) {
     this.formValueProps = []
 		return React.Children.map(children, child => {
       switch (child.type) {
@@ -86,7 +87,7 @@ const mapStateToProps = (state, ownProps) => (
     message: makeSelectMessage(ownProps.reducerKey),
     submitForms: makeSelectSubmitForms(ownProps.reducerKey),
     formLoading: makeSelectFormLoading(ownProps.reducerKey),
-    submittingDisabled: makeSelectSubmittingDisabled(ownProps.reducerKey)
+    submittingDisabled: makeSelectSubmittingDisabled(ownProps.reducerKey),
   })
 )
 

@@ -12,7 +12,8 @@ const initialState = fromJS({
   message: {},
   submitForms: false,
   formsLoading: false,
-  formStatus: {}
+  formStatus: {},
+  multiFormData: {},
 })
 
 const setMultiFormMessage = (state = initialState, action, reducerKey) => {
